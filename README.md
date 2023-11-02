@@ -29,18 +29,54 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### What are Styled-Components?
+`Styled-Components`, a  library for styling React components using tagged template literals.
+### Installation
+To use Styled-Components, you'll need to install it:
+```zsh
+npm install styled-components
+```
+### Basic Usage
+Example:
+```jsx
+import styled from 'styled-components'; 
+const Button = styled.button`
+		background: ${props => props.primary ? 'blue' : 'white'};   
+		color: ${props => props.primary ? 'white' : 'black'};
+		padding: 10px 20px;   border: 2px solid blue; `;  
+// Usage 
+<Button primary>Primary Button</Button> 
+<Button>Secondary Button</Button>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Advanced Styling
+Learn more advanced styling techniques using Styled-Components.
+### Global Styling
+Example:
+```jsx
+import { createGlobalStyle } from "styled-components"
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const GlobalStyle = createGlobalStyle`   body {     font-family: 'Arial', sans-serif;   } ` // Usage <GlobalStyle />
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Theming
+Example:
+```jsx
+import { ThemeProvider } from "styled-components"
+const theme = { primaryColor: "blue", secondaryColor: "green" }
+// Usage 
+<ThemeProvider theme={theme}>  
+	{/* Styled-Components components here */} 
+</ThemeProvider>
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Conditional Styling
+how to apply conditional styling in Styled-Components.
+Example:
+```jsx
+const Button = styled.button`   background: ${props => props.primary ? 'blue' : 'white'};   color: ${props => props.primary ? 'white' : 'black'};   padding: 10px 20px;   border: 2px solid ${props => props.primary ? 'blue' : 'black'}; `;  
+// Usage
+<Button primary>Primary Button</Button> <Button>Secondary Button</Button>
+```
